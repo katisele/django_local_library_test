@@ -25,7 +25,7 @@ import os
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'pk@=3rmf1f#d9h_7(8-pu22*t3al@-4g@*+vwm_2#8anr*&nwb')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 # Set hosts to allow any app on Heroku and the local testing URL
@@ -143,3 +143,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
+
+# Static file serving.
+# http://whitenoise.evans.io/en/stable/django.html#django-middleware
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
