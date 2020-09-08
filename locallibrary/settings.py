@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,12 +25,11 @@ import os
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'pk@=3rmf1f#d9h_7(8-pu22*t3al@-4g@*+vwm_2#8anr*&nwb')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False,
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', False))
+DEBUG = True,
+DEBUG = os.environ.get('DJANGO_DEBUG', True))
 
 # Set hosts to allow any app on Heroku and the local testing URL
 ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
-
 
 # Application definition
 
@@ -41,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'catalog',
+    'catalog.apps.CatalogConfig',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +81,7 @@ WSGI_APPLICATION = 'locallibrary.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
