@@ -59,8 +59,8 @@ ROOT_URLCONF = 'locallibrary.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': os.path.join(BASE_DIR, "/django_local_library_test/templates"),
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'locallibrary/templates')],
+        'APP_DIRS':True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
