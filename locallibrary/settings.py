@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
+import django_heroku
+
+django_heroku.settings(locals())
+
 
 from pathlib import Path
 
@@ -25,7 +29,7 @@ import os
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'pk@=3rmf1f#d9h_7(8-pu22*t3al@-4g@*+vwm_2#8anr*&nwb')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
+DEBUG = True,
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # Set hosts to allow any app on Heroku and the local testing URL
